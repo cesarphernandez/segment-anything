@@ -21,7 +21,7 @@ model_ts*.txt
 
 # onnx models
 *.onnx
-
+*.png
 # ipython/jupyter notebooks
 **/.ipynb_checkpoints/
 

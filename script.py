@@ -25,22 +25,23 @@ def show_output(result_dict,axes=None):
 
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-MODEL_TYPE = 'vit_h'
-model_path = '/Users/cesarpenahernandez/Downloads/sam_vit_h_4b8939.pth'
+print(DEVICE)
+MODEL_TYPE = 'vit_b'
+model_path = '/home/fibiaan/Downloads/sam_vit_b.pth'
 
 sam = sam_model_registry[MODEL_TYPE](checkpoint=model_path).to(device=DEVICE)
 mask_generator = SamAutomaticMaskGenerator(sam)
 
-IMAGE_NAME = '/Users/cesarpenahernandez/Downloads/IMG_1373.jpeg'
+IMAGE_NAME = '/home/fibiaan/Downloads/dog.jpeg'
 
 image_bgr = cv2.imread(IMAGE_NAME)
 image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
 
 sam_result = mask_generator.generate(image_rgb)
-_,axes = plt.subplots(1,2, figsize=(16,16))
-axes[0].imshow(image_rgb)
-show_output(sam_result, axes[1])
-plt.show()
+# _,axes = plt.subplots(1,2, figsize=(16,16))
+# axes[0].imshow(image_rgb)
+# show_output(sam_result, axes[1])
+# plt.show()
 
 
 
